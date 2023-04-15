@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=false">
+    <title>MemoryGame</title>
+
+    <link rel="stylesheet" href="Libraries/bootstrap.min.css">
+    <script src="Libraries/jquery.min.js"></script>
+    <script src="Libraries/bootstrap.bundle.min.js"></script>
+    <script src="Libraries/bootbox.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <div class="navbar-text mx-auto font-weight-bold" id="headerTitle" style="color:white">暗記ゲーム</div>
+    </nav>
+
+    <div class="container" id="lobby" style="margin-top:4rem">
+      <div class="accordion" id="accordion">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="card bg-light">
+              <div class="card-header text-center" id="listH0" data-toggle="collapse" href="#list0" aria-controls="#list0" aria-expanded="false">
+                <h5>国旗 → 国名</h5>
+              </div>
+
+              <div class="card-body collapse text-center" id="list0" data-parent="#listH0">
+
+                <a data-toggle="collapse" href="#form0-0" aria-controls="#form0-0" aria-expanded="false">アジア州</a>
+                <form class="collapse" id="form0-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-0" id="radio0-0-0" value="0">
+                    <label class="form-check-label" for="radio0-0-0">中央アジア</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-0" id="radio0-0-1" value="1">
+                    <label class="form-check-label" for="radio0-0-1">東アジア</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-0" id="radio0-0-2" value="2">
+                    <label class="form-check-label" for="radio0-0-2">南アジア</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-0" id="radio0-0-3" value="3">
+                    <label class="form-check-label" for="radio0-0-3">東南アジア</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-0" id="radio0-0-4" value="4">
+                    <label class="form-check-label" for="radio0-0-4">西アジア</label>
+                  </div>
+
+                  <button type="button" class="btn btn-primary" id="btn0-0">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form0-1" aria-controls="#form0-1" aria-expanded="false">北アメリカ州</a>
+                <form class="collapse" id="form0-1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-1" id="radio0-1-0" value="0">
+                    <label class="form-check-label" for="radio0-1-0">大陸地域</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-1" id="radio0-1-1" value="1">
+                    <label class="form-check-label" for="radio0-1-1">地峡地帯</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-1" id="radio0-1-2" value="2">
+                    <label class="form-check-label" for="radio0-1-2">バハマ諸島</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-1" id="radio0-1-3" value="3">
+                    <label class="form-check-label" for="radio0-1-3">大アンティル諸島</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios0-1" id="radio0-1-4" value="4">
+                    <label class="form-check-label" for="radio0-1-4">小アンティル諸島</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn0-1">開始</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="card bg-light">
+              <div class="card-header text-center" id="listH1" data-toggle="collapse" href="#list1" aria-controls="#list1" aria-expanded="false">
+                <h5>元素番号 → 元素記号・元素名</h5>
+              </div>
+
+              <div class="card-body collapse text-center" id="list1" data-parent="#listH1">
+                <form id="form1-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-0" value="0">
+                    <label class="form-check-label" for="radio1-0-0">１～１０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-1" value="1">
+                    <label class="form-check-label" for="radio1-0-1">１１～２０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-2" value="2">
+                    <label class="form-check-label" for="radio1-0-2">２１～３０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-3" value="3">
+                    <label class="form-check-label" for="radio1-0-3">３１～４０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-4" value="4">
+                    <label class="form-check-label" for="radio1-0-4">４１～５０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-5" value="5">
+                    <label class="form-check-label" for="radio1-0-5">５１～６０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-6" value="6">
+                    <label class="form-check-label" for="radio1-0-6">６１～７０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-7" value="7">
+                    <label class="form-check-label" for="radio1-0-7">７１～８０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-8" value="8">
+                    <label class="form-check-label" for="radio1-0-8">８１～９０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-9" value="9">
+                    <label class="form-check-label" for="radio1-0-9">９１～１００</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-10" value="10">
+                    <label class="form-check-label" for="radio1-0-10">１０１～１１０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios1-0" id="radio1-0-11" value="11">
+                    <label class="form-check-label" for="radio1-0-11">１１１～１１８</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn1-0">開始</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="card bg-light">
+              <div class="card-header text-center" id="listH2" data-toggle="collapse" href="#list2" aria-controls="#list2" aria-expanded="false">
+                <h5>モールス符号</h5>
+              </div>
+
+              <div class="card-body collapse text-center" id="list2" data-parent="#listH2">
+                <a data-toggle="collapse" href="#form2-0" aria-controls="#form2-0" aria-expanded="false">欧文</a>
+                <form class="collapse" id="form2-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios2-0" id="radio2-0-0" value="0">
+                    <label class="form-check-label" for="radio2-0-0">A~I</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios2-0" id="radio2-0-1" value="1">
+                    <label class="form-check-label" for="radio2-0-1">J~R</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios2-0" id="radio2-0-2" value="2">
+                    <label class="form-check-label" for="radio2-0-2">S~Z</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn2-0">開始</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="card bg-light">
+              <div class="card-header text-center" id="listH3" data-toggle="collapse" href="#list3" aria-controls="#list3" aria-expanded="false">
+                <h5>日本国憲法</h5>
+              </div>
+
+              <div class="card-body collapse text-center" id="list3" data-parent="#listH3">
+                <a data-toggle="collapse" href="#form3-0" aria-controls="#form3-0" aria-expanded="false">第１章 天皇</a>
+                <form class="collapse" id="form3-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-0" id="radio3-0-0" value="0">
+                    <label class="form-check-label" for="radio3-0-0">第１条～第８条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-0">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-1" aria-controls="#form3-1" aria-expanded="false">第２章 戦争の放棄</a>
+                <form class="collapse" id="form3-1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-1" id="radio3-1-0" value="0">
+                    <label class="form-check-label" for="radio3-1-0">第９条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-1">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-2" aria-controls="#form3-2" aria-expanded="false">第３章 国民の権利及び義務</a>
+                <form class="collapse" id="form3-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-2" id="radio3-2-0" value="0">
+                    <label class="form-check-label" for="radio3-2-0">第１０条～第１９条</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-2" id="radio3-2-1" value="1">
+                    <label class="form-check-label" for="radio3-2-1">第２０条～第２９条</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-2" id="radio3-2-2" value="2">
+                    <label class="form-check-label" for="radio3-2-2">第３０条～第４０条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-2">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-3" aria-controls="#form3-3" aria-expanded="false">第４章 国会</a>
+                <form class="collapse" id="form3-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-4" id="radio3-4-0" value="0">
+                    <label class="form-check-label" for="radio3-4-0">第４１条～第５２条</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-4" id="radio3-4-1" value="1">
+                    <label class="form-check-label" for="radio3-4-1">第５３条～第６４条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-3">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-4" aria-controls="#form3-4" aria-expanded="false">第５章 内閣</a>
+                <form class="collapse" id="form3-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-4" id="radio3-4-0" value="0">
+                    <label class="form-check-label" for="radio3-4-0">第６５条～第７５条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-4">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-5" aria-controls="#form3-5" aria-expanded="false">第６章 司法</a>
+                <form class="collapse" id="form3-5">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-5" id="radio3-5-0" value="0">
+                    <label class="form-check-label" for="radio3-5-0">第７６条～第８２条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-5">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-6" aria-controls="#form3-6" aria-expanded="false">第７章 財政</a>
+                <form class="collapse" id="form3-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-6" id="radio3-6-0" value="0">
+                    <label class="form-check-label" for="radio3-6-0">第８３条～第９１条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-6">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-7" aria-controls="#form3-7" aria-expanded="false">第８章 地方自治</a>
+                <form class="collapse" id="form3-7">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-7" id="radio3-7-0" value="0">
+                    <label class="form-check-label" for="radio3-7-0">第９２条～第９５条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-7">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-8" aria-controls="#form3-8" aria-expanded="false">第９章 改正</a>
+                <form class="collapse" id="form3-8">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-8" id="radio3-8-0" value="0">
+                    <label class="form-check-label" for="radio3-8-0">第９６条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-8">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-9" aria-controls="#form3-9" aria-expanded="false">第１０章 最高法規</a>
+                <form class="collapse" id="form3-9">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-9" id="radio3-9-0" value="0">
+                    <label class="form-check-label" for="radio3-9-0">第９７条～第９９条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-9">開始</button>
+                </form>
+
+                <hr>
+
+                <a data-toggle="collapse" href="#form3-10" aria-controls="#form3-10" aria-expanded="false">第１１章 補則</a>
+                <form class="collapse" id="form3-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios3-10" id="radio3-10-0" value="0">
+                    <label class="form-check-label" for="radio3-10-0">第１００条～第１０３条</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn3-10">開始</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <div class="card bg-light">
+              <div class="card-header text-center" id="listH4" data-toggle="collapse" href="#list4" aria-controls="#list4" aria-expanded="false">
+                <h5>百人一首</h5>
+              </div>
+
+              <div class="card-body collapse text-center" id="list4" data-parent="#listH4">
+                <form id="form4-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios4-0" id="radio4-0-0" value="0">
+                    <label class="form-check-label" for="radio4-0-0">１～１０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios4-0" id="radio4-0-1" value="1">
+                    <label class="form-check-label" for="radio4-0-1">１１～２０</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radios4-0" id="radio4-0-2" value="2">
+                    <label class="form-check-label" for="radio4-0-2">２１～３０</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="btn4-0">開始</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="container" id="quiz" style="margin-top:4rem; display:none">
+      <div class="p-3 border rounded border-primary">
+        <div>Q. <span id="question"></span></div>
+        <img class="img-fluid mx-auto d-block shadow" id="q_img"></img>
+        <span id="quizCount"></span>
+        <hr>
+        <div style="color:red">A. <span id="answer"></span></div>
+      </div>
+      <br>
+      <button type="button" class="btn btn-primary" onclick="Enter()">Enter</button>
+    </div>
+
+    <div class="container" id="exam" style="margin-top:4rem; display:none">
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

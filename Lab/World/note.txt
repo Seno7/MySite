@@ -1,0 +1,314 @@
+let w = window.innerWidth,
+    h = window.innerHeight,
+    scene,
+    camera,
+    camPos,
+    camRot,
+    renderer,
+    dLight,
+    aLight,
+    player,
+    viewRad = [Math.PI/2, 0],
+    cubes = new Array(),
+    touches = new Object();
+
+
+const BLACK  = 0x252525,
+      RED    = 0xFF0000,
+      GREEN  = 0x00FF00,
+      BLUE   = 0x0000FF,
+      YELLOW = 0xFFFF00,
+      WHITE  = 0xDADADA,
+
+      M = 20,
+
+      PI = Math.PI,
+      sin = n => n%PI == 0? 0 : Math.sin(n),
+      cos = n => (n-PI/2)%PI==0? 0 : Math.cos(n),
+      sign = n => Math.sign(n),
+      floor = n => Math.floor(n);
+
+
+
+class Vec {
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+};
+
+class Cube extends THREE.Mesh {
+  constructor(w, h, d, col) {
+    super(
+      new THREE.CubeGeometry(w, h, d),
+      new THREE.MeshPhongMaterial({
+        color: col
+      })
+    );
+    this.castShadow = true;
+    this.pos = this.position;
+    this.rot = this.rotation;
+    scene.add(this);
+  }
+};
+
+class Player extends THREE.Mesh {
+  constructor() {
+    super(
+      new THREE.CylinderGeometry(
+        0.4*M, 0.4*M, 1.8*M, 32
+      ),
+      new THREE.MeshBasicMaterial({
+        color: 0x000000
+      })
+    );
+    this.pos = this.position;
+    this.rot = this.rotation;
+    this.pos.set(0, -3.0*M, 0.9*M);
+    this.rot.set(PI/2, 0, 0);
+
+    scene.add(this);
+
+    initCamera();
+    camPos.set(
+      this.pos.x, this.pos.y+0.41*M, 1.75*M
+    );
+    camera.lookAt(0, 0, 1.75*M);
+
+    this.hitBox = 
+  }
+
+  move(x, y) {
+    camPos.x += x;
+    camPos.y += y;
+    this.pos.x += x;
+    this.pos.y += y;
+  }
+};
+
+
+
+
+
+window.addEventListener("resize", resizeF);
+window.addEventListener("touchstart", startTF);
+window.addEventListener("touchmove", moveTF);
+window.addEventListener("touchend", endTF);
+window.addEventListener("touchcancel", endTF);
+
+function resizeF() {
+  w = window.innerWidth;
+  h = window.innerHeight;
+  renderer.setSize(w, h);
+  camera.aspect = w/h;
+  camera.updateProjectionMatrix();
+}
+
+function startTF(e) {
+  e.preventDefault();
+
+  for(let i=0; i<e.changedTouches.length; i++) {
+    let touch = e.changedTouches[i],
+        id = touch.identifier,
+        x = touch.clientX,
+        y = touch.clientY,
+        type = x<w/2? 0 : 1;
+
+    touches[id] = [type, x, y, x, y];
+  }
+}
+
+function moveTF(e) {
+  e.preventDefault();
+
+  for(let i=0; i<e.changedTouches.length; i++) {
+    let touch = e.changedTouches[i],
+        id = touch.identifier,
+        x = touch.clientX,
+        y = touch.clientY;
+
+    touches[id][3] = x;
+    touches[id][4] = y;
+  }
+}
+
+function endTF(e) {
+  e.preventDefault();
+
+  for(let i=0; i<e.changedTouches.length; i++) {
+    let id = e.changedTouches[i].identifier;
+    delete touches[id];
+  }
+}
+
+
+
+
+
+function render() {
+  requestAnimationFrame(render);
+  move();
+  viewSet();
+  renderer.render(scene, camera);
+}
+
+function start() {
+  initScene();
+  initCamera();
+  initRenderer();
+  initLight();
+  initField();
+  initCube();
+  initPlayer();
+  render();
+}
+
+
+
+
+
+function initScene() {
+  scene = new THREE.Scene();
+}
+
+function initCamera() {
+  camera = new THREE.PerspectiveCamera(
+    60, w/h, 1, 1000
+  );
+  camPos = camera.position;
+  camRot = camera.rotation;
+
+  camera.up.set(0, 0, 1);
+}
+
+function initRenderer() {
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(w, h);
+  renderer.setClearColor(0x30AAFF);
+  renderer.shadowMap.enabled = true;
+  document.body.appendChild(
+    renderer.domElement
+  );
+}
+
+function initLight() {
+  dLight = new THREE.DirectionalLight(
+    0xFFFFFF
+  );
+  dLight.position.set(500, -250, 500);
+  dLight.castShadow = true;
+  scene.add(dLight);
+  aLight = new THREE.AmbientLight(
+    0x777777
+  );
+  scene.add(aLight);
+
+  dLight.shadow.camera.near = 1;
+  dLight.shadow.camera.far = 1000;
+  dLight.shadow.camera.top = 300;
+  dLight.shadow.camera.bottom = -300;
+  dLight.shadow.camera.right = 300;
+  dLight.shadow.camera.left = -300;
+  dLight.shadow.mapSize.width = 4096;
+  dLight.shadow.mapSize.height = 4096;
+}
+
+function initField() {
+  let num = 30,
+      tileSize = 1*M;
+  for(let i=0; i<Math.pow(num, 2); i++) {
+    let x = i % num,
+        y = Math.floor(i/num) % num,
+        flg = (i+(num+1)%2*floor(i/num))%2 == 0,
+        plane;
+
+    plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(
+        tileSize, tileSize
+      ),
+      new THREE.MeshLambertMaterial({
+        color: flg? 0x999999 : 0x4D4D4D
+      })
+    );
+    plane.position.set(
+      (x-(num-1)/2)*tileSize,
+      (y-(num-1)/2)*tileSize,
+      0
+    );
+    plane.receiveShadow = true;
+    scene.add(plane);
+  }
+}
+
+function initCube() {
+  cubes.push(
+    new Cube(0.5*M, 0.5*M, 0.5*M, BLACK)
+  );
+  cubes[0].position.set(0, 0, 0.25*M);
+}
+
+function initPlayer() {
+  player = new Player();
+}
+
+
+
+
+
+function move() {
+  for(let i in touches) {
+    let touch = touches[i],
+        oldX = touch[1],
+        oldY = touch[2],
+        x = touch[3],
+        y = touch[4],
+
+        dx = x - oldX,
+        dy = y - oldY,
+        th = Math.atan2( dy, dx ),
+        dist = Math.sqrt(
+          Math.pow(dx, 2) + Math.pow(dy, 2)
+        );
+
+
+    switch(touch[0]) {
+      case 0:
+        if(dist > 10) {
+          player.move(
+            -sin(th-viewRad[0]),
+            -cos(th-viewRad[0])
+          );
+        }
+        break;
+      case 1:
+        viewRad[0] -= dx / 100;
+        viewRad[1] -= dy / 100;
+        if(Math.abs(viewRad[1]) > PI*5/12) {
+          viewRad[1] = sign(viewRad[1]) * PI*5/12;
+        }
+        touch[1] = x;
+        touch[2] = y;
+        break;
+    }
+  }
+}
+
+function viewSet() {
+  let view = {
+    "x": cos(viewRad[0])*cos(viewRad[1]),
+    "y": sin(viewRad[0])*cos(viewRad[1]),
+    "z": sin(viewRad[1])
+  };
+  camera.lookAt(
+    view.x + camPos.x,
+    view.y + camPos.y,
+    view.z + camPos.z
+  );
+
+  camPos.set(
+    player.pos.x,
+    player.pos.y + 0.41*M,
+    player.pos.z + 0.85*M
+  );
+}

@@ -1,0 +1,7 @@
+canvas {
+  border: 1px solid black
+}
+
+input[type=range] {
+  width: 50px
+}

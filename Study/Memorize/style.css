@@ -1,0 +1,61 @@
+span {
+  background-color: red;
+  color: red;
+}
+
+p {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+h3 {
+  text-align: center;
+}
+
+#table {
+  padding: 3rem;
+  background-color: #DEF;
+  border-radius: 20px;
+  border: 1px dashed black;
+}
+
+#replaces {
+  padding: 3rem;
+  background-color: #FCC;
+  border-radius: 20px;
+  border: 1px dashed red;
+}
+
+#pageTop a {
+  position: fixed;
+  display: block;
+  bottom: 20px;
+  right: 80px;
+  padding: 8px;
+  border-radius: 30px;
+  line-height: 35px;
+  width: 35px;
+  height: 35px;
+  background-color: #9FD6D2;
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+#pageDark a {
+  position: fixed;
+  display: block;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px;
+  border-radius: 30px;
+  line-height: 35px;
+  width: 35px;
+  height: 35px;
+  background-color: #9FD6D2;
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}

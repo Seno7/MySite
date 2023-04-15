@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, minimal-ui" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Firebase [test1]</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="start_scr">
+    <div class="btn start_menu" id="menu_study">
+      <i class="fas fa-book-open"></i>
+    </div>
+    <div class="btn start_menu" id="menu_game">
+      <i class="fas fa-gamepad"></i>
+    </div>
+    <div class="btn start_menu" id="menu_lab">
+      <i class="fas fa-flask"></i>
+    </div>
+    <div class="btn start_menu" id="menu_data">
+      <i class="fas fa-user"></i>
+    </div>
+  </div>
+
+  <div class="start_list" id="study_scr">
+    <div class="btn sub_0 submenu" id="study_0">
+      <i class="fas fa-globe"></i>
+    </div>
+    <div class="overlay" id="over_study_0"></div>
+    <div class="help" id="help_study_0">
+      <p class="help_title">世界地図</p>
+      <div class="help_sub" id="help_sub0">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">各国の国名や首都を覚えましょう</p>
+      </div>
+      <a href="Study/WorldMap/index.html" class="let_btn">START</a>
+    </div>
+
+    <div class="btn sub_1 submenu" id="study_1">
+      <i class="fab fa-leanpub"></i>
+    </div>
+    <div class="overlay" id="over_study_1"></div>
+    <div class="help" id="help_study_1">
+      <p class="help_title">テスト勉強</p>
+      <div class="help_sub" id="help_sub1">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">情報工学のテスト勉強の赤シートです</p>
+      </div>
+      <a href="Study/Memorize/index.html" class="let_btn">START</a>
+    </div>
+
+    <div class="btn sub_2 submenu" id="study_2">
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="overlay" id="over_study_2"></div>
+    <div class="help" id="help_study_2">
+      <p class="help_title">暗記ゲーム</p>
+      <div class="help_sub" id="help_sub2">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">様々な分野の暗記をしましょう</p>
+      </div>
+      <a href="Study/MemoryGame/index.html" class="let_btn">START</a>
+    </div>
+
+
+    <div class="btn back_btn" id="study_back">
+    </div>
+
+  </div>
+
+  <div class="start_list" id="game_scr">
+
+    <div class="btn sub_0 submenu" id="game_0">
+      <i class="fa-solid fa-infinity"></i>
+    </div>
+    <div class="overlay" id="over_game_0"></div>
+    <div class="help" id="help_game_0">
+      <p class="help_title">計算迷路</p>
+      <div class="help_sub" id="help_sub0">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">一筆書きで橋を渡って点数を増やしましょう<br>音を出してのプレイがオススメですが、スマホだと音がずれます悲しい</p>
+        <p class="help_subtitle">操作</p>
+        <p class="help_content">
+          <p>矢印キーで進行方向を決定</p>
+        </p>
+      </div>
+      <a href="Game/CalcMaze/index.html" class="let_btn">START</a>
+    </div>
+
+<!--
+    <div class="btn sub_1 submenu" id="game_1">
+      <i class="fas fa-shield-alt"></i>
+    </div>
+    <div class="overlay" id="over_game_1"></div>
+    <div class="help" id="help_game_1">
+      <p class="help_title">UnityTest</p>
+      <div class="help_sub" id="help_sub0">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">UnityのWebGLビルドのテストです<br>パドルでボールを落とさないようにしましょう</p>
+        <p class="help_subtitle">操作</p>
+        <p class="help_content">
+          <p>左右の矢印キーでパドルを操作</p>
+        </p>
+      </div>
+      <a href="Game/UnityTest/index.html" class="let_btn">START</a>
+    </div>
+-->
+
+    <div class="btn back_btn" id="game_back">
+    </div>
+  </div>
+
+  <div class="start_list" id="lab_scr">
+    <div class="btn sub_0 submenu" id="lab_0">
+      <i class="fas fa-cubes"></i>
+    </div>
+    <div class="btn sub_1 submenu" id="lab_1">
+      <i class="fas fa-wave-square"></i>
+    </div>
+
+    <div class="btn back_btn" id="lab_back">
+    </div>
+
+    <div class="overlay" id="over_lab_0"></div>
+    <div class="help" id="help_lab_0">
+      <p class="help_title">Three.js テスト</p>
+      <div class="help_sub" id="help_sub0">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">3次元での物理演算のテストです</p>
+      <!--<p class="help_subtitle">操作</p>
+        <p class="help_content">
+        <p><b>PC</b></p>
+        <p>&nbsp;&nbsp;WASDキーで移動</p>
+        <p>&nbsp;&nbsp;画面内クリックで全画面化</p>
+        <p>&nbsp;&nbsp;全画面時マウスドラッグで視点移動</p>
+        <p><b>スマホ</b></p>
+        <p>&nbsp;&nbsp;画面左をスライドで移動</p>
+        <p>&nbsp;&nbsp;画面右をスライドで視点移動</p> -->
+      </div>
+      <a href="Lab/World/index.html" class="let_btn">START</a>
+    </div>
+
+    <div class="overlay" id="over_lab_1"></div>
+    <div class="help" id="help_lab_1">
+      <p class="help_title">Audio Wave</p>
+      <div class="help_sub" id="help_sub1">
+        <p class="help_subtitle">概要</p>
+        <p class="help_content">正弦波の重ね合わせで好きな波形を作って音を再生できます</p>
+      </div>
+      <a href="Lab/AudioWave/index.html" class="let_btn">START</a>
+    </div>
+  </div>
+
+  <div class="start_list" id="data_scr">
+    <div class="btn back_btn" id="data_back">
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "*****",
+      authDomain: "*****",
+      databaseURL: "*****",
+      projectId: "*****",
+      storageBucket: "*****",
+      messagingSenderId: "*****"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

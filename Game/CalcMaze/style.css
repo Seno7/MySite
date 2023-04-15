@@ -1,0 +1,116 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #CCC;
+  margin: 0;
+  overflow: hidden;
+}
+
+#board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  margin: -230px 0px 0px -150px;
+  background-color: #EEE;
+}
+
+#score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 20px;
+  width: 200px;
+  margin: -255px 0px 0px -100px;
+  border: 1px solid black;
+
+  font-size: 20px;
+  font-weight: bold;
+  background-color: white;
+  text-align: center;
+  line-height: 20px;
+  color: hsl(240, 80%, 50%);
+  text-stroke: 0.5px black;
+  -webkit-text-stroke: 0.5px black;
+}
+
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 2;
+}
+
+#gameOver {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  margin: -150px 0px 0px -150px;
+  border-radius: 50px;
+  background-color: #EEE;
+  font-weight: bold;
+  border: 3px solid blue;
+}
+
+#gameOverTitle {
+  text-align: center;
+}
+
+#pad_retry {
+  position: absolute;
+  width: 60px; height: 60px;
+  right: 120px; bottom: 5px;
+  border-radius: 50%;
+  line-height: 60px;
+  font-size: 30px;
+}
+
+.btn {
+  padding: 0;
+  background-color: #ddd;
+  color: #bbb;
+  position: absolute;
+  text-shadow: 2px 2px 2px
+               rgba(255, 255, 255, 0.66);
+  box-shadow: inset 0 4px 0
+              rgba(255,255,255,0.5),
+              0 4px 4px rgba(0, 0, 0, 0.19);
+  border: solid 1px black;
+  text-align: center;
+  cursor: pointer;
+}
+.btn:active {
+  box-shadow: inset 0 2px 0
+              rgba(255,255,255,0.5),
+              0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: none;
+}
+
+.d_pad {
+  position: absolute;
+  width: 50px; height: 50px;
+  top: 80%;
+  left: 50%;
+  border-radius: 10px;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+#pad_u { margin: -75px 0px 0px -25px; }
+#pad_d { margin:  25px 0px 0px -25px; }
+#pad_l { margin: -25px 0px 0px -75px; }
+#pad_r { margin: -25px 0px 0px  25px; }

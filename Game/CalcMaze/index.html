@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>計算迷路</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+  <script src="img/p5.min.js"></script>
+</head>
+<body>
+  <audio id="btn_audio"><source src="./audio/button.wav" type="audio/wav"></audio>
+  <audio id="tap_audio"><source src="./audio/tap.wav" type="audio/wav"></audio>
+  <audio id="cel_audio"><source src="./audio/celebration.wav" type="audio/wav"></audio>
+  <audio id="op0_audio"><source src="./audio/op0.mp3" type="audio/mp3"></audio>
+  <audio id="op1_audio"><source src="./audio/op1.mp3" type="audio/mp3"></audio>
+  <audio id="op2_audio"><source src="./audio/op2.mp3" type="audio/mp3"></audio>
+  <audio id="op3_audio"><source src="./audio/op3.mp3" type="audio/mp3"></audio>
+  <audio id="res_audio"><source src="./audio/res.mp3" type="audio/mp3"></audio>
+
+  <div id="score">1</div>
+
+  <div id="modal">
+    <div id="gameOver">
+      <h1 id="gameOverTitle">Game Over</h1>
+      <h2>&emsp;Score: <span style="float: right; text-align: right;" id="gameOverScore">1,000,000&emsp;</span></h2>
+      <h2>&emsp;Stage: <span style="float: right; text-align: right;" id="gameOverStage">6&emsp;</span></h2>
+      <h2>&emsp;Rank: <span style="float: right; text-align: right;" id="gameOverRank">S+++++++&emsp;</span></h2>
+      <div class="btn" id="pad_retry"><i class="fas fa-redo"></i></div>
+    </div>
+  </div>
+
+  <div id="input">
+    <div class="btn d_pad snd__button" id="pad_u"><i class="fa fa-arrow-up"></i></div>
+    <div class="btn d_pad" id="pad_d"><i class="fa fa-arrow-down"></i></div>
+    <div class="btn d_pad" id="pad_l"><i class="fa fa-arrow-left"></i></div>
+    <div class="btn d_pad" id="pad_r"><i class="fa fa-arrow-right"></i></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
